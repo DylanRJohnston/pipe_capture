@@ -21,8 +21,10 @@ mix archive.install github wojtekmach/pipe_capture
 Add to `~/.iex.exs`:
 
 ```elixir
-import Kernel, except: [|>: 2]
-import PipeCapture
+use PipeCapture
+
+# or on Elixir 1.7+:
+use_if_available PipeCapture
 ```
 
 Start IEx:

@@ -1,4 +1,11 @@
 defmodule PipeCapture do
+  defmacro __using__(_) do
+    quote do
+      import Kernel, except: [|>: 2]
+      import PipeCapture
+    end
+  end
+
   @doc """
   `Kernel.|>/2` extended to support `Kernel.SpecialForms.&` captures.
 
