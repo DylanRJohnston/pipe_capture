@@ -41,6 +41,10 @@ defmodule PipeCapture do
   defp pipe(expr, {:&, _, _} = call_args, position) do
     Macro.pipe(expr, {{:., [], [call_args]}, [], []}, position)
   end
+  
+  defp pipe(expr, {:fn, _, _} = call_args, position) do
+    Macro.pipe(expr, {{:., [], [call_args]}, [], []}, position)
+  end
 
   defp pipe(expr, call, position), do: Macro.pipe(expr, call, position)
 end
